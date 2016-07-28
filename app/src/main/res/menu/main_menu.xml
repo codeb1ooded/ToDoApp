@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xmnls="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    >
+
+    <item android:name="Add Item" app:showasaction="never" android:title="Add Item" android:id="@+id/addItem"></item>
+    <item android:name="Delete Item" android:title="Delete Item" app:showasaction="never" android:id="@+id/deleteAllItem"></item>
+    <item android:name="Search Item" android:title="Search" app:showasaction="never" android:id="@+id/searchItem"></item>
+</menu>
