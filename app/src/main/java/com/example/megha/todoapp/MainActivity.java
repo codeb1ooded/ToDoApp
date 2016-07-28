@@ -49,6 +49,36 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(i, REQUEST_CODE);
             }
         });
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int pos, long id) {
+                final int position = pos;
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Confirm");
+                builder.setMessage("Do you really want to delete all items");
+                LayoutInflater inflater = getLayoutInflater();
+                View v = inflater.inflate(R.layout.dialog_confirm_all_deletion, null);
+                builder.setView(v);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ToDoListContents toDo = listToDos.get(position);
+                        listToDos.remove(position);
+                        adapter.notifyDataSetChanged();
+                        SQLHelper sqlHelper = new SQLHelper(MainActivity.this, 1);
+                        SQLiteDatabase db = sqlHelper.getWritableDatabase();
+                        db.delete(SQLHelper.TABLE_NAME, SQLHelper._ID + "=" + toDo.getID(), null);
+                        Toast.makeText(MainActivity.this, toDo.title + " ToDo deleted", Toast.LENGTH_SHORT);
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {}
+                });
+                builder.create().show();
+                return true;
+            }
+        });
     }
 
     private ArrayList<ToDoListContents> getToDos() {
@@ -81,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             i.putExtra(Constants.MainActivityToDo, new ToDoListContents("", "", ""));
             startActivityForResult(i,REQUEST_CODE);
         }
-        /*else if(item.getItemId() == R.id.deleteAllItem){
+        else if(item.getItemId() == R.id.deleteAllItem) {
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
             builder.setTitle("Confirm");
             builder.setMessage("Do you really want to delete all items");
@@ -91,19 +121,23 @@ public class MainActivity extends AppCompatActivity {
             builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    listToDos = new ArrayList<>();
-                    // Not working
-                    adapter.notifyAll();
+                    int size = listToDos.size();
+                    for(int i =0; i<size; i++)
+                        listToDos.remove(0);
+                    adapter.notifyDataSetChanged();
+                    SQLHelper sqlHelper = new SQLHelper(MainActivity.this, 1);
+                    SQLiteDatabase db = sqlHelper.getWritableDatabase();
+                    db.delete(SQLHelper.TABLE_NAME, null, null);
+                    Toast.makeText(MainActivity.this, "All ToDos deleted", Toast.LENGTH_SHORT);
                 }
             });
-            builder.setNegativeButton("No", new DialogInterface.OnClickListener(){
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                 @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    //Nothing to do
-                }
+                public void onClick(DialogInterface dialog, int which) {}
             });
             builder.create().show();
         }
+       /* }
         else if(item.getItemId() == R.id.searchItem){
             //To Do later on
         }*/
