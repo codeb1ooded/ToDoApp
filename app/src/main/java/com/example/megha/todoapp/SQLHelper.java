@@ -16,6 +16,7 @@ public class SQLHelper extends SQLiteOpenHelper {
     final static String TITLE = "Title";
     final static String DATE = "Date";
     final static String CONTENT = "Content";
+    final static String COLOUR = "Colour";
 
     public SQLHelper(Context context, int version){
         super(context, DATABASE_NAME, null, version);
@@ -24,7 +25,7 @@ public class SQLHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE "+TABLE_NAME+" ( "+_ID+" INTEGER , "+TITLE+" TEXT, "+ DATE+" TEXT, "+
-                CONTENT+" TEXT );";
+                CONTENT+" TEXT, "+COLOUR+" INTEGER , "+" );";
         db.execSQL(query);
     }
 

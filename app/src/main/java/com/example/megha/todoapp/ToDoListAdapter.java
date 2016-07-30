@@ -2,6 +2,7 @@ package com.example.megha.todoapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -30,6 +31,7 @@ public class ToDoListAdapter extends ArrayAdapter<ToDoListContents> {
         TextView dateView = (TextView) convertView.findViewById(R.id.dateTextView);
         titleView.setText(objects.get(position).title);
         dateView.setText(objects.get(position).date);
+      //  convertView.setBackgroundColor();
         return convertView;
     }
 }

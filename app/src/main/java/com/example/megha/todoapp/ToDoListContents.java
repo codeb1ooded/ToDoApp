@@ -9,12 +9,6 @@ public class ToDoListContents implements Serializable {
     String content;
     private static int count = 0;
 
-    ToDoListContents(String title, String date){
-        this.title = title;
-        this.date = date;
-        this.id = ++count;
-    }
-
     ToDoListContents(String title, String date, String content){
         this.title = title;
         this.date = date;
