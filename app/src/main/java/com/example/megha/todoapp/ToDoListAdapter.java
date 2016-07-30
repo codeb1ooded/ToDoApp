@@ -31,7 +31,7 @@ public class ToDoListAdapter extends ArrayAdapter<ToDoListContents> {
         TextView dateView = (TextView) convertView.findViewById(R.id.dateTextView);
         titleView.setText(objects.get(position).title);
         dateView.setText(objects.get(position).date);
-      //  convertView.setBackgroundColor();
+       convertView.setBackgroundColor(objects.get(position).color);
         return convertView;
     }
 }

@@ -21,6 +21,7 @@ public class SeperateToDoActivity extends AppCompatActivity {
     EditText title, content;
     TextView toDoDate;
     Button save, cancel;
+    int color;
 
     int position = -9;
     Intent i;
@@ -40,9 +41,10 @@ public class SeperateToDoActivity extends AppCompatActivity {
 
         i = getIntent();
         toDo = (ToDoListContents) i.getSerializableExtra(Constants.MainActivityToDo);
-
+        color = toDo.color;
         toDoDate.setText((new Date()).toString());
         title.setText(toDo.title);
+        title.setBackgroundColor(color);
         content.setText(toDo.content);
 
         save.setOnClickListener(new View.OnClickListener() {
@@ -69,9 +71,20 @@ public class SeperateToDoActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.addColor){
-            Toast.makeText(SeperateToDoActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+
+        if(item.getItemId() == R.id.action_dropdown_default){
+            color = 0xff4f5051;
         }
+        else if(item.getItemId() == R.id.action_dropdown_red){
+            color = 0xffff0000;
+        }
+        else if(item.getItemId() == R.id.action_dropdown_green){
+            color = 0xff00ff00;
+        }
+        else if(item.getItemId() == R.id.action_dropdown_blue){
+            color = 0xff0000ff;
+        }
+        title.setBackgroundColor(color);
         return true;
     }
 
@@ -82,7 +95,7 @@ public class SeperateToDoActivity extends AppCompatActivity {
         }
         else{
             Intent intent = new Intent();
-            ToDoListContents toDoObject = new ToDoListContents( title.getText().toString(), (new Date()).toString(), content.getText().toString());
+            ToDoListContents toDoObject = new ToDoListContents( title.getText().toString(), (new Date()).toString(), content.getText().toString(), color);
             toDoObject.setID(toDo.getID());
             intent.putExtra(Constants.SepereateToDoActivityToDo, (Serializable) toDoObject);
             intent.putExtra(Constants.SepereateToDoActivityPosition, position);

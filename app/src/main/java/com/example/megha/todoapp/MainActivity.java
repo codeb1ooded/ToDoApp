@@ -89,13 +89,14 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<ToDoListContents> list_to_dos = new ArrayList<>();
         SQLHelper sqlHelper = new SQLHelper(this, 1);
         SQLiteDatabase db = sqlHelper.getReadableDatabase();
-        String columns[] = {SQLHelper.TITLE, SQLHelper.DATE, SQLHelper.CONTENT, SQLHelper._ID};
+        String columns[] = {SQLHelper.TITLE, SQLHelper.DATE, SQLHelper.CONTENT, SQLHelper._ID, SQLHelper.COLOR};
         Cursor c = db.query(false, SQLHelper.TABLE_NAME, columns, null, null, null, null, SQLHelper.DATE + " DESC", null);
         while (c.moveToNext()) {
             String title = c.getString(c.getColumnIndex(SQLHelper.TITLE));
             String date = c.getString(c.getColumnIndex(SQLHelper.DATE));
             String content = c.getString(c.getColumnIndex(SQLHelper.CONTENT));
-            ToDoListContents todo = new ToDoListContents(title, date, content);
+            int colour = c.getInt(c.getColumnIndex(SQLHelper.COLOR));
+            ToDoListContents todo = new ToDoListContents(title, date, content, colour);
             list_to_dos.add(todo);
         }
         return list_to_dos;
@@ -112,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.addItem) {
             Intent i = new Intent();
             i.setClass(MainActivity.this, SeperateToDoActivity.class);
-            i.putExtra(Constants.MainActivityToDo, new ToDoListContents("", "", ""));
+            i.putExtra(Constants.MainActivityToDo, new ToDoListContents("", "", "", 0xFF4f5051));
             startActivityForResult(i,REQUEST_CODE);
         }
         else if(item.getItemId() == R.id.deleteAllItem) {
@@ -163,12 +164,13 @@ public class MainActivity extends AppCompatActivity {
                 cv.put(SQLHelper.CONTENT, toDo.content);
                 cv.put(SQLHelper.DATE, toDo.date);
                 cv.put(SQLHelper.TITLE, toDo.title);
+                cv.put(SQLHelper.COLOR, toDo.color);
                 db.insert(SQLHelper.TABLE_NAME, null, cv);
                 adapter.notifyDataSetChanged();
             } else {
                 listToDos.set(position, toDo);
                 String query = "UPDATE " + SQLHelper.TABLE_NAME + " SET " + SQLHelper.DATE + "= \"" + toDo.date +
-                        "\" , " + SQLHelper.TITLE + "= \"" + toDo.title + "\" , " + SQLHelper.CONTENT + "= \"" + toDo.content +
+                        "\" , " + SQLHelper.TITLE + "= \"" + toDo.title +"\" , " + SQLHelper.COLOR + "= \"" + toDo.color + "\" , " + SQLHelper.CONTENT + "= \"" + toDo.content +
                         "\"  WHERE " + SQLHelper._ID + " = " + toDo.getID() + ";";
                 db.execSQL(query);
                 adapter.notifyDataSetChanged();

@@ -8,5 +8,20 @@
         app:showAsAction="always"
         android:title="+"
         android:icon="@android:drawable/btn_star"
-        android:id="@+id/addColor"></item>
+        android:id="@+id/addColor">
+        <menu>
+            <item
+                android:id="@+id/action_dropdown_default"
+                android:title="Default" />
+            <item
+                android:id="@+id/action_dropdown_red"
+                android:title="RED" />
+            <item
+                android:id="@+id/action_dropdown_green"
+                android:title="GREEN" />
+            <item
+                android:id="@+id/action_dropdown_blue"
+                android:title="BLUE" />
+        </menu>
+    </item>
 </menu>
