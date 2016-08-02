@@ -73,16 +73,16 @@ public class SeperateToDoActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if(item.getItemId() == R.id.action_dropdown_default){
-            color = 0xff4f5051;
+            color = Color.DEFAULT;
         }
         else if(item.getItemId() == R.id.action_dropdown_red){
-            color = 0xffff0000;
+            color = Color.RED;
         }
         else if(item.getItemId() == R.id.action_dropdown_green){
-            color = 0xff00ff00;
+            color = Color.GREEN;
         }
         else if(item.getItemId() == R.id.action_dropdown_blue){
-            color = 0xff0000ff;
+            color = Color.BLUE;
         }
         title.setBackgroundColor(color);
         return true;

@@ -4,4 +4,8 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="title_list">25dp</dimen>
+    <dimen name="title_todo">35dp</dimen>
+    <dimen name="text_todo">25dp</dimen>
+    <dimen name="date_todo">20dp</dimen>
+    <dimen name="button_todo">30dp</dimen>
 </resources>

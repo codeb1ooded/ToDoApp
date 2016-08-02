@@ -59,14 +59,14 @@ public class MainActivity extends AppCompatActivity {
                 final int position = pos;
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("Confirm");
-                builder.setMessage("Do you really want to delete all items");
+                final ToDoListContents toDo = listToDos.get(position);
+                builder.setMessage("Do you really want to delete \'" + toDo.title + "\' item");
                 LayoutInflater inflater = getLayoutInflater();
                 View v = inflater.inflate(R.layout.dialog_confirm_all_deletion, null);
                 builder.setView(v);
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ToDoListContents toDo = listToDos.get(position);
                         listToDos.remove(position);
                         adapter.notifyDataSetChanged();
                         SQLHelper sqlHelper = new SQLHelper(MainActivity.this, 1);

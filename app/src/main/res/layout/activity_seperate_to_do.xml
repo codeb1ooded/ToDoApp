@@ -40,7 +40,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:textColor="@color/colorWhite"/>
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/title_todo"/>
 
         <TextView
             android:layout_width="100dp"
@@ -49,7 +50,8 @@
             android:id="@+id/dateTextView"
             android:layout_below="@+id/titleEditText"
             android:layout_alignParentRight="true"
-            android:textColor="@color/colorWhite" />
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/date_todo" />
 
         <EditText
             android:layout_width="match_parent"
@@ -61,7 +63,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_above="@+id/saveButton"
-            android:textColor="@color/colorWhite" />
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/text_todo" />
 
         <Button
             android:layout_width="wrap_content"
@@ -72,7 +75,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:background="@color/colorBlack"
-            android:textColor="@color/colorWhite" />
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/button_todo" />
 
         <Button
             android:layout_width="wrap_content"
@@ -82,7 +86,8 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:textColor="@color/colorWhite"
-            android:background="@color/colorBlack"/>
+            android:background="@color/colorBlack"
+            android:textSize="@dimen/button_todo" />
     </RelativeLayout>
 
 </LinearLayout>
