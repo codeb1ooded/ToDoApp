@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("Home");
+        setTitle("ToDo App");
         listToDos = getToDos();
         adapter = new ToDoListAdapter(this, listToDos);
         ListView lv = (ListView) findViewById(R.id.listView);

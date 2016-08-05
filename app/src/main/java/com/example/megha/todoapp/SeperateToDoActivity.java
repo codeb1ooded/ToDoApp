@@ -84,6 +84,12 @@ public class SeperateToDoActivity extends AppCompatActivity {
         else if(item.getItemId() == R.id.action_dropdown_blue){
             color = Color.BLUE;
         }
+        else if(item.getItemId() == R.id.action_dropdown_yellow){
+            color = Color.YELLOW;
+        }
+        else if(item.getItemId() == R.id.action_dropdown_brown){
+            color = Color.BROWN;
+        }
         title.setBackgroundColor(color);
         return true;
     }

@@ -22,6 +22,12 @@
             <item
                 android:id="@+id/action_dropdown_blue"
                 android:title="BLUE" />
+            <item
+                android:id="@+id/action_dropdown_yellow"
+                android:title="YELLOW" />
+            <item
+                android:id="@+id/action_dropdown_brown"
+                android:title="BROWN" />
         </menu>
     </item>
 </menu>

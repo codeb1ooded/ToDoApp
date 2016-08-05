@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/title_list"
         android:id="@+id/titleTextView"
-        android:textColor="@color/colorWhite"/>
+        android:textColor="@color/colorBlack"/>
 
     <TextView
         android:layout_width="0dp"
@@ -19,6 +19,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/dateTextView"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:textColor="@color/colorWhite"/>
+        android:textColor="@color/colorBlack"/>
 
 </LinearLayout>

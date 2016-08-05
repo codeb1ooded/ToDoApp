@@ -6,4 +6,11 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorGrey">#4f5051</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="CHARCOAL">#344055</color>
+    <color name="GRAY_ASPARAGUS">#3a5743</color>
+    <color name="MING">#3b7080</color>
+    <color name="CELESTE">#c5fffd</color>
+    <color name="INCHWORM">#ade25d</color>
+    <color name="TEA_GREEN">#cfffb3</color>
+    <color name="MUGHAL_GREEN">#345830</color>
 </resources>
